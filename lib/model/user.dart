@@ -1,15 +1,17 @@
 class User {
-  String nome;
-  double peso;
-  String sexo;
-  double aguaDiaria;
+  double weight;
+  String gender;
+  double diaryWater;
   bool isFirsTime;
 
   User({
-    this.nome,
-    this.peso,
-    this.sexo,
-    this.aguaDiaria,
-    this.isFirsTime,
+    this.weight,
+    this.gender,
+    this.diaryWater,
+    this.isFirsTime = false,
   });
+
+  calculateDiaryWater() {
+    return weight * 35;
+  }
 }
