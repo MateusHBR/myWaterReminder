@@ -1,3 +1,4 @@
+import 'package:dink_water/view/configuration_screen.dart';
 import 'package:dink_water/view/home_water_screen.dart';
 import 'package:dink_water/view/relatory_screen.dart';
 import 'package:dink_water/widgets/tab_widget.dart';
@@ -43,7 +44,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             HomeWaterScreen(),
             RelatoryScreen(),
-            Container(),
+            ConfigurationScreen(),
           ],
         ),
       ),
