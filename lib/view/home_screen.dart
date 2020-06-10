@@ -1,4 +1,5 @@
 import 'package:dink_water/view/home_water_screen.dart';
+import 'package:dink_water/view/relatory_screen.dart';
 import 'package:dink_water/widgets/tab_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,7 @@ class HomeScreen extends StatelessWidget {
                     indicatorColor: Colors.white,
                     tabs: [
                       TabWidget('Início', Icons.local_drink),
-                      TabWidget('Histórico', Icons.history),
+                      TabWidget('Relatório', Icons.assignment),
                       TabWidget('Configurações', Icons.settings),
                     ],
                   ),
@@ -41,7 +42,7 @@ class HomeScreen extends StatelessWidget {
         body: TabBarView(
           children: [
             HomeWaterScreen(),
-            Container(),
+            RelatoryScreen(),
             Container(),
           ],
         ),
