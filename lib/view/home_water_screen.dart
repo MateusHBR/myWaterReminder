@@ -34,12 +34,23 @@ class HomeWaterScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Text(
-                    '1000/1000 ml',
+                    '1000/1000',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: size.height * 0.04,
                     ),
+                  ),
+                  Text(
+                    'ml',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: size.height * 0.04,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
                   ),
                   Text(
                     'Meta de bebida diária',
@@ -54,7 +65,7 @@ class HomeWaterScreen extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(bottom: 1),
                     height: size.height * 0.08,
-                    width: size.height * 0.1,
+                    width: size.height * 0.12,
                     child: RaisedButton(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
@@ -65,7 +76,13 @@ class HomeWaterScreen extends StatelessWidget {
                         ),
                       ),
                       color: Colors.blue[100],
-                      child: Icon(Icons.local_drink),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text('2000ml'),
+                          Icon(Icons.local_drink),
+                        ],
+                      ),
                       onPressed: () {},
                     ),
                   ),
