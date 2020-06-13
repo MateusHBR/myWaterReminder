@@ -1,7 +1,7 @@
 class User {
   double weight;
   String gender;
-  double diaryWater;
+  int diaryWater;
   bool isFirsTime;
 
   User({
