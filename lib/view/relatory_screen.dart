@@ -61,6 +61,7 @@ class RelatoryScreen extends StatelessWidget {
                   title: Text('Beba água temperada'),
                   subtitle: Text(
                     'Para quem não é muito fã do gosto da água, a água “temperada” ou aromatizada com rodelas de limão ou folhas de hortelã é a melhor opção. Para dar sabor, pode-se usar também abacaxi, canela em pau, gengibre, conforme a preferência pelo gosto.',
+                    textAlign: TextAlign.justify,
                   ),
                 ),
                 Padding(
@@ -97,6 +98,7 @@ class RelatoryScreen extends StatelessWidget {
                   title: Text('Coma mais frutas e verduras'),
                   subtitle: Text(
                     'A maioria dos alimentos in natura ou minimamente processados e as preparações com esses alimentos têm alto conteúdo de água. O leite e a maior parte das frutas contêm entre 80% e 90% de água. Verduras e legumes cozidos ou na forma de saladas costumam ter mais do que 90% do seu peso em água. Após o cozimento, macarrão, batata ou mandioca têm cerca de 70% de água. Um prato de feijão com arroz é constituído de dois terços de água. Quando a alimentação é baseada nesses alimentos e preparações, é usual que forneçam cerca de metade da água que precisamos ingerir.',
+                    textAlign: TextAlign.justify,
                   ),
                 ),
                 Padding(
