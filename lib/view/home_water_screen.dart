@@ -1,4 +1,5 @@
 import 'package:dink_water/widgets/item_listTile.dart';
+import 'package:dink_water/widgets/water_sphere.dart';
 import 'package:flutter/material.dart';
 
 class HomeWaterScreen extends StatelessWidget {
@@ -11,83 +12,39 @@ class HomeWaterScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
-              height: size.height * 0.35,
-              width: size.height * 0.35,
-              padding: EdgeInsets.only(
-                left: size.height * 0.05,
-                right: size.height * 0.05,
-                top: size.height * 0.05,
-              ),
-              decoration: BoxDecoration(
-                color: Theme.of(context).scaffoldBackgroundColor,
-                borderRadius: BorderRadius.circular(500),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey,
-                    offset: Offset(0.0, 1.0), //(x,y)
-                    blurRadius: 6.0,
-                  ),
-                ],
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  Text(
-                    '1000/1000',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: size.height * 0.04,
-                    ),
-                  ),
-                  Text(
-                    'ml',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: size.height * 0.04,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    'Meta de bebida diária',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: size.height * 0.02,
-                    ),
-                  ),
-                  SizedBox(
-                    height: size.height * 0.08,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 1),
-                    height: size.height * 0.08,
-                    width: size.height * 0.12,
-                    child: RaisedButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(50),
-                          topRight: Radius.circular(50),
-                          bottomLeft: Radius.circular(20),
-                          bottomRight: Radius.circular(20),
+            Stack(
+              children: <Widget>[
+                WaterSphere(),
+                Positioned(
+                  bottom: 0,
+                  right: 65,
+                  left: 65,
+                  child: InkWell(
+                    onTap: () {},
+                    child: Stack(
+                      children: <Widget>[
+                        Opacity(
+                          opacity: 0.1,
+                          child: Container(
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
                         ),
-                      ),
-                      color: Colors.blue[100],
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text('2000ml'),
-                          Icon(Icons.local_drink),
-                        ],
-                      ),
-                      onPressed: () {},
+                        Positioned(
+                          left: 48,
+                          right: 48,
+                          top: 10,
+                          bottom: 10,
+                          child: Text('+200'),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
             Row(
               children: <Widget>[
