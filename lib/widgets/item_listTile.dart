@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ItemListTile extends StatelessWidget {
+  final String date;
+  final String ml;
+
+  const ItemListTile({Key key, this.date, this.ml}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -17,12 +22,12 @@ class ItemListTile extends StatelessWidget {
               padding: const EdgeInsets.only(
                 left: 8,
               ),
-              child: Text('400ml'),
+              child: Text('$ml ml'),
             ),
           ],
         ),
       ),
-      title: Text('10:20'),
+      title: Text('$date Horas'),
       trailing: IconButton(
         icon: Icon(
           Icons.remove_circle,
