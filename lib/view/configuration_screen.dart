@@ -1,9 +1,12 @@
+import 'package:dink_water/store/home_water_store.dart';
 import 'package:dink_water/widgets/item_config.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ConfigurationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final homeWaterStore = Provider.of<HomeWaterStore>(context);
     var size = MediaQuery.of(context).size;
     return ListView(
       children: <Widget>[
@@ -28,7 +31,7 @@ class ConfigurationScreen extends StatelessWidget {
         ),
         ItemConfig(
           title: 'Meta de ingestão',
-          value: '2500 ml',
+          value: '${homeWaterStore.user.diaryWater} ml',
         ),
         Padding(
           padding: EdgeInsets.symmetric(
@@ -38,7 +41,7 @@ class ConfigurationScreen extends StatelessWidget {
         ),
         ItemConfig(
           title: 'Sexo',
-          value: 'Masculino',
+          value: '${homeWaterStore.user.gender}',
         ),
         Padding(
           padding: EdgeInsets.symmetric(
@@ -48,7 +51,7 @@ class ConfigurationScreen extends StatelessWidget {
         ),
         ItemConfig(
           title: 'Peso',
-          value: '80 Kg',
+          value: '${homeWaterStore.user.weight} Kg',
         ),
         Padding(
           padding: EdgeInsets.symmetric(
