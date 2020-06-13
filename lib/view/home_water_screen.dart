@@ -1,11 +1,24 @@
+import 'package:dink_water/model/cups.dart';
+import 'package:dink_water/store/home_water_store.dart';
 import 'package:dink_water/widgets/item_listTile.dart';
 import 'package:dink_water/widgets/water_sphere.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class HomeWaterScreen extends StatelessWidget {
+  String formatDate(DateTime date) {
+    DateFormat dateFormat = DateFormat("HH:mm");
+    String formatted = dateFormat.format(date);
+    return formatted.toString();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final homeWaterStore = Provider.of<HomeWaterStore>(context);
     var size = MediaQuery.of(context).size;
+
     return SingleChildScrollView(
       child: Container(
         height: size.height * 0.88,
@@ -20,7 +33,15 @@ class HomeWaterScreen extends StatelessWidget {
                   right: 65,
                   left: 65,
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      homeWaterStore.addValue();
+                      homeWaterStore.addCup(
+                        Cups(
+                          ml: 200,
+                          date: DateTime.now(),
+                        ),
+                      );
+                    },
                     child: Stack(
                       children: <Widget>[
                         Opacity(
@@ -34,11 +55,19 @@ class HomeWaterScreen extends StatelessWidget {
                           ),
                         ),
                         Positioned(
-                          left: 48,
-                          right: 48,
-                          top: 10,
-                          bottom: 10,
-                          child: Text('+200'),
+                          child: Container(
+                            height: 40,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(Icons.local_drink),
+                                Text(
+                                  '+200',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -70,16 +99,23 @@ class HomeWaterScreen extends StatelessWidget {
               height: size.height * 0.4,
               child: Card(
                 elevation: 6,
-                child: ListView.separated(
-                  separatorBuilder: (context, index) => Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: size.height * 0.02,
-                    ),
-                    child: Divider(),
-                  ),
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return ItemListTile();
+                child: Observer(
+                  builder: (_) {
+                    return ListView.separated(
+                      separatorBuilder: (context, index) => Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: size.height * 0.02,
+                        ),
+                        child: Divider(),
+                      ),
+                      itemCount: homeWaterStore.cups.length,
+                      itemBuilder: (context, index) {
+                        return ItemListTile(
+                          ml: homeWaterStore.cups[index].ml.toString(),
+                          date: formatDate(homeWaterStore.cups[index].date),
+                        );
+                      },
+                    );
                   },
                 ),
               ),
