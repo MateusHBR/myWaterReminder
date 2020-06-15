@@ -1,13 +1,18 @@
+import 'package:dink_water/store/home_water_store.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ItemListTile extends StatelessWidget {
   final String date;
   final String ml;
+  final Function function;
 
-  const ItemListTile({Key key, this.date, this.ml}) : super(key: key);
+  const ItemListTile({Key key, this.date, this.ml, this.function})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var homeWaterStore = Provider.of<HomeWaterStore>(context);
     var size = MediaQuery.of(context).size;
     return ListTile(
       leading: Container(
@@ -33,7 +38,7 @@ class ItemListTile extends StatelessWidget {
           Icons.remove_circle,
           color: Colors.red,
         ),
-        onPressed: () {},
+        onPressed: function,
       ),
     );
   }
