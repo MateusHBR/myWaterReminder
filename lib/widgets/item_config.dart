@@ -11,7 +11,7 @@ class ItemConfig extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: function,
       child: ListTile(
         title: Text(title),
         trailing: Text(
