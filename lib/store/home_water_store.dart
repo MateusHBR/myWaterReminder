@@ -1,5 +1,7 @@
 import 'package:dink_water/model/cups.dart';
+import 'package:dink_water/model/genre.dart';
 import 'package:dink_water/model/user.dart';
+import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 part 'home_water_store.g.dart';
 
@@ -9,7 +11,7 @@ abstract class _HomeWaterStoreBase with Store {
   @observable
   var user = User(
     weight: 80,
-    gender: 'Masculino',
+    gender: Gender.masculino,
     diaryWater: 2800,
     isFirsTime: false,
   );
@@ -24,10 +26,43 @@ abstract class _HomeWaterStoreBase with Store {
   @action
   void addValue() => value += 200;
 
+  @action
+  plusValue() => user.diaryWater += 100;
+
+  @action
+  subtractValue() => user.diaryWater -= 100;
+
   var cups = ObservableList<Cups>().asObservable();
 
   @action
   void addCup(Cups cup) {
     cups.add(cup);
   }
+
+  @action
+  void removCup(int index) {
+    cups.removeAt(index);
+  }
+
+  ObservableList<DropdownMenuItem<Gender>> getDropDownGenre() {
+    ObservableList<DropdownMenuItem<Gender>> gender = ObservableList();
+    for (var type in Gender.values) {
+      gender.add(
+        DropdownMenuItem(
+          value: type,
+          child: Text(
+            type.description(),
+            style: TextStyle(
+              color: Colors.lightBlue,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      );
+    }
+    return gender.asObservable();
+  }
+
+  @action
+  void changeDropDown(value) => user.gender = value;
 }

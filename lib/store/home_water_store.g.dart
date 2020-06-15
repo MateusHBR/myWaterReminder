@@ -54,6 +54,61 @@ mixin _$HomeWaterStore on _HomeWaterStoreBase, Store {
   }
 
   @override
+  dynamic plusValue() {
+    final _$actionInfo = _$_HomeWaterStoreBaseActionController.startAction(
+        name: '_HomeWaterStoreBase.plusValue');
+    try {
+      return super.plusValue();
+    } finally {
+      _$_HomeWaterStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic subtractValue() {
+    final _$actionInfo = _$_HomeWaterStoreBaseActionController.startAction(
+        name: '_HomeWaterStoreBase.subtractValue');
+    try {
+      return super.subtractValue();
+    } finally {
+      _$_HomeWaterStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void addCup(Cups cup) {
+    final _$actionInfo = _$_HomeWaterStoreBaseActionController.startAction(
+        name: '_HomeWaterStoreBase.addCup');
+    try {
+      return super.addCup(cup);
+    } finally {
+      _$_HomeWaterStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void removCup(int index) {
+    final _$actionInfo = _$_HomeWaterStoreBaseActionController.startAction(
+        name: '_HomeWaterStoreBase.removCup');
+    try {
+      return super.removCup(index);
+    } finally {
+      _$_HomeWaterStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeDropDown(dynamic value) {
+    final _$actionInfo = _$_HomeWaterStoreBaseActionController.startAction(
+        name: '_HomeWaterStoreBase.changeDropDown');
+    try {
+      return super.changeDropDown(value);
+    } finally {
+      _$_HomeWaterStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 user: ${user},
