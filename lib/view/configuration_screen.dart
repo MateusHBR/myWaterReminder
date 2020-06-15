@@ -1,6 +1,8 @@
 import 'package:dink_water/store/home_water_store.dart';
 import 'package:dink_water/widgets/item_config.dart';
+import 'package:dink_water/widgets/modal_bottom.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
 class ConfigurationScreen extends StatelessWidget {
@@ -29,9 +31,24 @@ class ConfigurationScreen extends StatelessWidget {
           ),
           child: Divider(),
         ),
-        ItemConfig(
-          title: 'Meta de ingestão',
-          value: '${homeWaterStore.user.diaryWater} ml',
+        Observer(
+          builder: (_) {
+            return ItemConfig(
+              title: 'Meta de ingestão',
+              value: '${homeWaterStore.user.diaryWater} ml',
+              function: () => showModalBottomSheet(
+                context: context,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
+                ),
+                isScrollControlled: true,
+                builder: (_) => ModalBottom(),
+              ),
+            );
+          },
         ),
         Padding(
           padding: EdgeInsets.symmetric(
@@ -39,9 +56,18 @@ class ConfigurationScreen extends StatelessWidget {
           ),
           child: Divider(),
         ),
-        ItemConfig(
-          title: 'Sexo',
-          value: '${homeWaterStore.user.gender}',
+        ListTile(
+          title: Text('Sexo'),
+          trailing: Observer(
+            builder: (_) {
+              return DropdownButton(
+                // hint: Text('Selecione seu sexo'),
+                value: homeWaterStore.user.gender,
+                items: homeWaterStore.getDropDownGenre(),
+                onChanged: homeWaterStore.changeDropDown,
+              );
+            },
+          ),
         ),
         Padding(
           padding: EdgeInsets.symmetric(
@@ -51,7 +77,7 @@ class ConfigurationScreen extends StatelessWidget {
         ),
         ItemConfig(
           title: 'Peso',
-          value: '${homeWaterStore.user.weight} Kg',
+          value: '${homeWaterStore.user.weight} KG',
         ),
         Padding(
           padding: EdgeInsets.symmetric(
