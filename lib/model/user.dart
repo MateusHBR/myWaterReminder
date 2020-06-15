@@ -1,10 +1,23 @@
-class User {
+import 'package:mobx/mobx.dart';
+import './genre.dart';
+part 'user.g.dart';
+
+class User = _UserBase with _$User;
+
+abstract class _UserBase with Store {
+  @observable
   double weight;
-  String gender;
+
+  @observable
+  Gender gender;
+
+  @observable
   int diaryWater;
+
+  @observable
   bool isFirsTime;
 
-  User({
+  _UserBase({
     this.weight,
     this.gender,
     this.diaryWater,
