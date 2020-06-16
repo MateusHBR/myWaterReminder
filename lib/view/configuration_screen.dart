@@ -1,4 +1,5 @@
 import 'package:dink_water/store/home_water_store.dart';
+import 'package:dink_water/widgets/bottom_modal_weight.dart';
 import 'package:dink_water/widgets/item_config.dart';
 import 'package:dink_water/widgets/modal_bottom.dart';
 import 'package:flutter/material.dart';
@@ -75,9 +76,23 @@ class ConfigurationScreen extends StatelessWidget {
           ),
           child: Divider(),
         ),
-        ItemConfig(
-          title: 'Peso',
-          value: '${homeWaterStore.user.weight} KG',
+        Observer(
+          builder: (_) {
+            return ItemConfig(
+              title: 'Peso',
+              value: '${homeWaterStore.user.weight} KG',
+              function: () => showModalBottomSheet(
+                context: context,
+                builder: (_) => BottomModalWeight(),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20)),
+                ),
+                // isScrollControlled: true,
+              ),
+            );
+          },
         ),
         Padding(
           padding: EdgeInsets.symmetric(
