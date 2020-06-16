@@ -27,10 +27,18 @@ abstract class _HomeWaterStoreBase with Store {
   void addValue() => value += 200;
 
   @action
-  plusValue() => user.diaryWater += 100;
+  plusValue() {
+    if (user.diaryWater < 15001) {
+      user.diaryWater += 100;
+    }
+  }
 
   @action
-  subtractValue() => user.diaryWater -= 100;
+  subtractValue() {
+    if (user.diaryWater > 0) {
+      user.diaryWater -= 100;
+    }
+  }
 
   var cups = ObservableList<Cups>().asObservable();
 
