@@ -65,4 +65,19 @@ abstract class _HomeWaterStoreBase with Store {
 
   @action
   void changeDropDown(value) => user.gender = value;
+  @action
+  void addWeight() {
+    if (user.weight < 300) {
+      user.weight += 0.5;
+      setDiaryWater();
+    }
+  }
+
+  @action
+  void remWeight() {
+    if (user.weight > (0)) {
+      user.weight -= 0.5;
+      setDiaryWater();
+    }
+  }
 }
