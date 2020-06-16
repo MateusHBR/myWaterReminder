@@ -109,6 +109,28 @@ mixin _$HomeWaterStore on _HomeWaterStoreBase, Store {
   }
 
   @override
+  void addWeight() {
+    final _$actionInfo = _$_HomeWaterStoreBaseActionController.startAction(
+        name: '_HomeWaterStoreBase.addWeight');
+    try {
+      return super.addWeight();
+    } finally {
+      _$_HomeWaterStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void remWeight() {
+    final _$actionInfo = _$_HomeWaterStoreBaseActionController.startAction(
+        name: '_HomeWaterStoreBase.remWeight');
+    try {
+      return super.remWeight();
+    } finally {
+      _$_HomeWaterStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 user: ${user},

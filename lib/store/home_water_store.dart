@@ -8,11 +8,19 @@ part 'home_water_store.g.dart';
 class HomeWaterStore = _HomeWaterStoreBase with _$HomeWaterStore;
 
 abstract class _HomeWaterStoreBase with Store {
+  _HomeWaterStoreBase() {
+    autorun(
+      (_) {
+        setDiaryWater();
+      },
+    );
+  }
+
   @observable
   var user = User(
     weight: 80,
     gender: Gender.masculino,
-    diaryWater: 2800,
+    diaryWater: 0,
     isFirsTime: false,
   );
 
@@ -73,6 +81,7 @@ abstract class _HomeWaterStoreBase with Store {
 
   @action
   void changeDropDown(value) => user.gender = value;
+
   @action
   void addWeight() {
     if (user.weight < 300) {
